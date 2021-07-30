@@ -1,0 +1,6 @@
+41F5E:
+  endpoint: https://sandbox.dfour.space
+  snapshots:
+    sample-perimeter:
+      bfsNumber: 230
+      topic: Perimeter
