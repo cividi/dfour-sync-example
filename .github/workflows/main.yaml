@@ -1,0 +1,19 @@
+on: push
+name: publish to dfour
+jobs:
+  github-action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      # Upload from repo and fetch data packages in workspace (newer wins)
+      - name: sync folder with dfour
+        uses: cividi/dfour-sync@v0.1.0b5
+        with:
+          dfour_endpoint: https://sandbox.dfour.space
+          dfour_username: ${{ secrets.DFOUR_USERNAME }}
+          dfour_password: ${{ secrets.DFOUR_PASSWORD }}
+          dfour_workspace: ${{ secrets.DFOUR_WORKSPACE }}
+          # folder: _out/snapshots # default
+      # For committing back downloaded snapshots
+      - name: push
+        uses: actions-x/commit@v2
